@@ -128,18 +128,40 @@
                             <tbody *ngIf="entries" >
                                 <tr *ngFor="let e of entries" >
                                     
-                                        <td><span class="label label-pill label-success">OK</span></td>
+                                        <td>
+                                        <span [ngClass]="{'label': true, 'label-pill': true, 
+                                                        'label-warning': e.status == 'Warn', 
+                                                        'label-danger':  e.status == 'Danger',  
+                                                        'label-success':  e.status == 'OK' 
+                                                        }">
+                                            {{e.status}}</span>                                          
+                                            </td>
+                                            
+
                                         <td>{{e.residentId}}</td>
                                         <td>{{e.name}}</td>
                                         <td>61-65</td>
-                                        <td><span class="label label-pill label-success">{{e.hr}}</span></td>
-                                        <td><span class="label label-pill label-success">{{e.o2_sat_percent}}%</span></td>
+
+                                        <td><span [ngClass]="{'label': true, 'label-pill': true, 
+                                                        'label-warning': (e.init&&e.hr>=31&&e.hr<=60)||(e.init&&e.hr>=111&&e.hr<=130)||(!e.init&& e.hr_class=='WARN')  , 
+                                                        'label-danger': (e.init&&e.hr<=30)||(e.init&&e.hr>=131)||(!e.init&& e.hr_class=='DANGER'), 
+                                                        'label-success': (e.init&&e.hr>=61&&e.hr<=110) ||(!e.init&& e.hr_class=='SUCCESS') 
+                                                        }">
+                                            {{e.hr}}</span></td>
+                                                 
+                                        <td><span [ngClass]="{'label': true, 'label-pill': true, 
+                                                        'label-warning': (e.init&&e.o2_sat_percent>=90&&e.o2_sat_percent<=92)||(!e.init&& e.oxygen_class=='WARN')  , 
+                                                        'label-danger': (e.init&&e.o2_sat_percent<90)||(!e.init&& e.oxygen_class=='DANGER'), 
+                                                        'label-success': (e.init&&e.o2_sat_percent>92) ||(!e.init&& e.oxygen_class=='SUCCESS') 
+                                                        }">
+                                            {{e.o2_sat_percent}}%</span></td>
                                         <td>{{e.step}}</td>
                                         <td>{{e.floors_asc + e.floors_desc}}</td>
                                         <td>{{e.water_datetime}}</td>
                                         <td>{{e.water_intake_ml/1000}} L</td>
                                         <td>{{e.med_datetime}}</td>
-                                        <td><span class="label label-pill label-success">{{e.fall}}</span></td>
+                                        <td><span [ngClass]="{'label': true, 'label-pill': true, 'label-success': e.fall<=0,  'label-danger': e.fall>0 }">
+                                            {{e.fall}}</span></td>
                                         <td>{{e.sleep}}</td>
                                 </tr>
                                     
@@ -164,5 +186,10 @@
             responsive: true
         });
         alert('msg');
+       
     });
+</script>
+
+<script>
+    refreshMe();
 </script>

@@ -18,4 +18,9 @@ export class Entry{
       water_datetime:string;
       water_intake_ml:number;
 
+      hr_class:string;
+      oxygen_class:string;
+      
+      init:boolean = true;
+      status:string;
 }
