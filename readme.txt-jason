@@ -1,0 +1,3 @@
+npm install socket.io-client --save
+npm install @types/socket.io-client --save
+sudo typings install socket.io-client --save --global 

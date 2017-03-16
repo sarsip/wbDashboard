@@ -1,0 +1,115 @@
+<header>
+    <h1>New Resident Profile</h1>
+</header>
+
+<div class="form-group">
+    <form class="well">
+        <!--<div *ngIf=device.errors class="alert alert-danger">
+            <div [hidden]="!device.errors.required">
+                Device is required.
+            </div>
+        </div>-->
+        <div class="row top-buffer">
+            <div class="col-md-4">
+                <label for="device">Device ID</label>
+                <input type="text" id="device" class="form-control" placeholder="Device ID" [(ngModel)]="prof.device" 
+                #device="ngModel" name="device" required minlength="4">
+
+                <div *ngIf="device.errors && (device.dirty || device.touched)"
+                    class="alert alert-danger">
+                    <div [hidden]="!device.errors.required">
+                    Device ID is required
+                    </div>
+                    <div [hidden]="!device.errors.minlength">
+                    Device ID must be at least 4 characters long.
+                    </div>
+                </div>
+            </div>
+              
+            <div class="col-md-4">
+                <label for="residentId">Resident ID</label>
+                <input type="text" class="form-control" placeholder="Resident ID" [(ngModel)]="prof.residentId" 
+                #residentId="ngModel" name="residentId" required  id="residentId" minlength="4">
+                <div [hidden]="residentId.valid || residentId.pristine"
+                     class="alert alert-danger">
+                    Resident ID is required
+                </div>               
+            </div>
+        </div>
+        <div class="row top-buffer">
+            <div class="col-md-4">
+                <label for="firstNameEng">First Name</label>
+                <input type="text"  id="firstNameEng" class="form-control" placeholder="First Name" [(ngModel)]="prof.firstNameEng" 
+                #firstNameEng="ngModel" name="firstNameEng" required>
+                <div [hidden]="firstNameEng.valid || firstNameEng.pristine"
+                     class="alert alert-danger">
+                    First Name is required
+                </div>                 
+            </div>
+            <div class="col-md-4">
+                <label for="lastNameEng">Last Name</label>
+                <input type="text"  id="lastNameEng" class="form-control" placeholder="Last Name" [(ngModel)]="prof.lastNameEng" 
+                #lastNameEng="ngModel" name="lastNameEng" required>
+                <div [hidden]="lastNameEng.valid || lastNameEng.pristine"
+                     class="alert alert-danger">
+                    Last Name is required
+                </div>                 
+            </div>
+        </div>
+        <div class="row top-buffer">
+            <div class="col-md-4">
+                <label for="firstNameOther">中文名字</label>
+                <input type="text"  id="firstNameOther" class="form-control" placeholder="中文名字" [(ngModel)]="prof.firstNameOther" 
+                #firstNameOther="ngModel" name="firstNameOther" required>
+                <div [hidden]="firstNameOther.valid || firstNameOther.pristine"
+                     class="alert alert-danger">
+                    中文名字 is required
+                </div>                 
+            </div>
+            <div class="col-md-4">
+                <label for="lastNameOther">中文姓氏</label>
+                <input type="text"  id="lastNameOther" class="form-control" placeholder="中文姓氏" [(ngModel)]="prof.lastNameOther" 
+                #lastNameOther="ngModel" name="lastNameOther" required>
+                <div [hidden]="lastNameOther.valid || lastNameOther.pristine"
+                     class="alert alert-danger">
+                    中文姓氏 is required
+                </div>                 
+            </div>
+        </div>
+
+        <div class="row top-buffer">
+            <div class="col-md-4">
+                <label for="displayName">Display Name</label>
+                <input type="text"  id="displayName" class="form-control" placeholder="Display Name" [(ngModel)]="prof.displayName" 
+                #displayName="ngModel" name="displayName" required>
+                <div [hidden]="displayName.valid || displayName.pristine"
+                     class="alert alert-danger">
+                    Display Name is required
+                </div>                 
+        
+            </div>
+            <div class="col-md-4 btn-top-buffer">
+      
+                <button type="button" name="useEng" class="btn btn-default" (click)="engName()">Use English Name</button>
+                <button type="button" class="btn btn-default" (click)="otherName()">Use Chinese Name</button>
+
+            </div>
+        </div>
+
+        <div class="row top-buffer">
+
+            <div class="col-md-4">
+                <label for="dob">Date of Birth</label>
+                <datepicker name="dob" [(ngModel)]="dob" [showWeeks]="true" [minDate]="minDate" [onlyCurrentMonth]=true (select)="setDob()"
+                    (click)="setDob()"></datepicker>
+            </div>
+        </div>
+        <div class="row top-buffer">
+            <div class="col-md-4">
+
+                <button type="button" class="btn btn-primary" (click)="postForm()">Create</button>
+            </div>
+        </div>
+
+    </form>
+</div>
