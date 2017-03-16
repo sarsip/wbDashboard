@@ -28,7 +28,11 @@
       'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js'
 
       //socket io
-      ,"socket.io-client": 'npm:socket.io-client'
+      ,"socket.io-client": 'npm:socket.io-client' 
+
+      //ng2-bootstrap
+      ,"ng2-bootstrap": "node_modules/ng2-bootstrap"
+      ,"moment": "node_modules/moment"
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
@@ -42,6 +46,14 @@
        ,"socket.io-client": {
         main: './dist/socket.io.js'
       }
+      //ng2-bootstrap
+       , "ng2-bootstrap":{
+         main:"bundles/ng2-bootstrap.umd.js",defaultExtensio:"js",formart:"cjs"
+        },
+       "moment":{
+         main:"moment.js",defaultExtensio:"js"
+        }
+
     }
   });
 })(this);

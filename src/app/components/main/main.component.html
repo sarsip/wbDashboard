@@ -14,7 +14,7 @@
                             <i class="fa fa-battery-quarter fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">26</div>
+                            <div class="huge">{{batteryReplaceCount}}</div>
                             <div>Replace Device</div>
                         </div>
                     </div>
@@ -36,7 +36,7 @@
                             <i class="fa fa-bed fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">67</div>
+                            <div class="huge">{{normalCount}}</div>
                             <div>Normal</div>
                         </div>
                     </div>
@@ -58,7 +58,7 @@
                             <i class="fa fa-heartbeat fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">13</div>
+                            <div class="huge">{{hrAlert}}</div>
                             <div>Heart Rate Alerts</div>
                         </div>
                     </div>
@@ -80,7 +80,7 @@
                             <i class="fa fa-user-md fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">1</div>
+                            <div class="huge">{{immediateAttention}}</div>
                             <div>Immediate Attention</div>
                         </div>
                     </div>
@@ -151,7 +151,7 @@
                                                  
                                         <td><span [ngClass]="{'label': true, 'label-pill': true, 
                                                         'label-warning': (e.init&&e.o2_sat_percent>=90&&e.o2_sat_percent<=92)||(!e.init&& e.oxygen_class=='WARN')  , 
-                                                        'label-danger': (e.init&&e.o2_sat_percent<90)||(!e.init&& e.oxygen_class=='DANGER'), 
+                                                        'label-danger': (e.o2_sat_percent!=null&&e.init&&e.o2_sat_percent<90)||(!e.init&& e.oxygen_class=='DANGER'), 
                                                         'label-success': (e.init&&e.o2_sat_percent>92) ||(!e.init&& e.oxygen_class=='SUCCESS') 
                                                         }">
                                             {{e.o2_sat_percent}}%</span></td>
@@ -160,7 +160,7 @@
                                         <td>{{e.water_datetime}}</td>
                                         <td>{{e.water_intake_ml/1000}} L</td>
                                         <td>{{e.med_datetime}}</td>
-                                        <td><span [ngClass]="{'label': true, 'label-pill': true, 'label-success': e.fall<=0,  'label-danger': e.fall>0 }">
+                                        <td><span [ngClass]="{'label': true, 'label-pill': true, 'label-success': e.fall!=null&&e.fall<=0,  'label-danger': e.fall>0 }">
                                             {{e.fall}}</span></td>
                                         <td>{{e.sleep}}</td>
                                 </tr>
