@@ -1,0 +1,42 @@
+<div class="page-wrapper">
+
+    <div class="row">
+
+        <div class="panel-body">
+            <h1>Battery Status</h1>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Device Battery Status
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                        <thead>
+                            <tr>
+
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Device #</th>
+                                <th>Battery %</th>
+                             </tr>
+                        </thead>
+                          <tbody *ngIf="entries" >
+                                <tr *ngFor="let p of entries" >
+                                    <td><a routerLink="/profile/{{p.residentId}}">{{p.residentId}}</a></td>
+                                    <td>{{p.name}}</td>
+                                    <td>{{p.device}}</td>
+                                    <td>{{p.batt_percent}}</td>
+                                    
+                                </tr>
+                          </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
