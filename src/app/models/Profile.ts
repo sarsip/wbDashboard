@@ -11,4 +11,7 @@ export class Profile {
 
     id: string;
     dob: Date;
+
+    age: number;
+    dobStr: string;
 }

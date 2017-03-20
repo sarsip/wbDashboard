@@ -117,8 +117,8 @@ export class MainComponent implements OnInit {
                         i.oxygen_class  = this.getO2Style(i);
                     }
 
-                    if(data.new_val.water_datetime!=null)
-                        i.water_datetime = this.formatDate(data.new_val.water_datetime);
+                    if(data.new_val.timestamp!=null)
+                        i.water_datetime = this.formatDate(data.new_val.timestamp);
                     if(data.new_val.water_intake_ml!=null)
                         i.water_intake_ml = data.new_val.water_intake_ml;
                     if(data.new_val.med_datetime!=null)
